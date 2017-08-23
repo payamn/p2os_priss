@@ -222,26 +222,26 @@ P2OSNode::check_and_set_vel()
 
   {
     // non-direct wheel control
-    motorcommand[0] = VEL;
-    if( vx >= 0 ) motorcommand[1] = ARGINT;
-    else motorcommand[1] = ARGNINT;
+    // motorcommand[0] = VEL;
+    // if( vx >= 0 ) motorcommand[1] = ARGINT;
+    // else motorcommand[1] = ARGNINT;
 
-    absSpeedDemand = (unsigned short)abs(vx);
-    if( absSpeedDemand <= this->motor_max_speed )
-    {
-      motorcommand[2] = absSpeedDemand & 0x00FF;
-      motorcommand[3] = (absSpeedDemand & 0xFF00) >> 8;
-    }
-    else
-    {
-      ROS_WARN( "speed demand thresholded! (true: %u, max: %u)", absSpeedDemand, motor_max_speed );
-      motorcommand[2] = motor_max_speed & 0x00FF;
-      motorcommand[3] = (motor_max_speed & 0xFF00) >> 8;
-    }
-    motorpacket.Build(motorcommand, 4);
-    SendReceive(&motorpacket);
+    // absSpeedDemand = (unsigned short)abs(vx);
+    // if( absSpeedDemand <= this->motor_max_speed )
+    // {
+    //   motorcommand[2] = absSpeedDemand & 0x00FF;
+    //   motorcommand[3] = (absSpeedDemand & 0xFF00) >> 8;
+    // }
+    // else
+    // {
+    //   ROS_WARN( "speed demand thresholded! (true: %u, max: %u)", absSpeedDemand, motor_max_speed );
+    //   motorcommand[2] = motor_max_speed & 0x00FF;
+    //   motorcommand[3] = (motor_max_speed & 0xFF00) >> 8;
+    // }
+    // motorpacket.Build(motorcommand, 4);
+    // SendReceive(&motorpacket);
 
-    motorcommand[0] = RVEL;
+    // motorcommand[0] = RVEL;
     if( va >= 0 ) motorcommand[1] = ARGINT;
     else motorcommand[1] = ARGNINT;
 
